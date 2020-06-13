@@ -1,7 +1,9 @@
 package com.pulkit.microservices.currencyservice;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.pulkit.microservices.currencyservice.bean.CurrencyConversionBean;
+import com.pulkit.microservices.currencyservice.bean.ProductBean;
 import com.pulkit.microservices.currencyservice.client.CurrencyExchangeServiceProxy;
 
 @RestController
@@ -34,6 +37,30 @@ public class CurrencyConversionController {
 		response.setTotalConvertedQuantity(quantity.multiply(response.getConversionMultiple()));
 		logger.info("Inside Currency Conversion service ->{}",response);
 		return response;
+	}
+	
+	@GetMapping("/products")
+	public List<ProductBean>  getProducts(){
+		
+		List<ProductBean> products = new ArrayList<>();
+		
+		ProductBean product = new ProductBean();
+		product.setDescription("");
+		
+		ProductBean product1 = new ProductBean();
+		product1.setDescription("");
+		
+		ProductBean product2 = new ProductBean();
+		product2.setDescription("");
+		
+		ProductBean product3 = new ProductBean();
+		product3.setDescription("");
+		products.add(product);
+		products.add(product1);
+		products.add(product2);
+		products.add(product3);
+		
+		return products;
 	}
 	
 	@GetMapping("/currency-converter-feign/from/{from}/to/{to}/quantity/{quantity}")
