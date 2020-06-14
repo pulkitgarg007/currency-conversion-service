@@ -2,6 +2,7 @@ package com.pulkit.microservices.currencyservice;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,16 +46,44 @@ public class CurrencyConversionController {
 		List<ProductBean> products = new ArrayList<>();
 		
 		ProductBean product = new ProductBean();
-		product.setDescription("");
+		product.setDescription("15 gallon capacity rolling garden cart");
+		product.setImageUrl("assets/images/garden_cart.png");
+		product.setPrice(10.65);
+		product.setProductCode("XB-34");
+		product.setProductId(5);
+		product.setReleaseDate("12th March, 2020");
+		product.setProductName("Garden Cart");
+		product.setStarRating(2.5);
 		
 		ProductBean product1 = new ProductBean();
-		product1.setDescription("");
+		product1.setDescription("Curved claw steel hammer");
+		product1.setImageUrl("assets/images/hammer.png");
+		product1.setPrice(4.65);
+		product1.setProductCode("XB-50");
+		product1.setProductId(4);
+		product1.setReleaseDate("10th March, 2019");
+		product1.setProductName("Hammer");
+		product1.setStarRating(3.5);
 		
 		ProductBean product2 = new ProductBean();
-		product2.setDescription("");
+		product2.setDescription("Curved claw Saw");
+		product2.setImageUrl("assets/images/saw.png");
+		product2.setPrice(5.65);
+		product2.setProductCode("XB-23");
+		product2.setProductId(3);
+		product2.setReleaseDate("12th April, 2019");
+		product2.setProductName("Saw");
+		product2.setStarRating(4.0);
 		
 		ProductBean product3 = new ProductBean();
-		product3.setDescription("");
+		product3.setDescription("Curved claw Leaf Rake");
+		product3.setImageUrl("assets/images/leaf_rake.png");
+		product3.setPrice(10.65);
+		product3.setProductCode("XB-21");
+		product3.setProductId(2);
+		product3.setReleaseDate("12th May, 2020");
+		product3.setProductName("Leaf Rake");
+		product3.setStarRating(4.5);
 		products.add(product);
 		products.add(product1);
 		products.add(product2);

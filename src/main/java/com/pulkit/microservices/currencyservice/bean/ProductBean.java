@@ -1,5 +1,7 @@
 package com.pulkit.microservices.currencyservice.bean;
 
+import java.util.Date;
+
 public class ProductBean {
 	
 	private Integer productId;
@@ -31,8 +33,8 @@ public class ProductBean {
 	public String getReleaseDate() {
 		return releaseDate;
 	}
-	public void setReleaseDate(String releaseDate) {
-		this.releaseDate = releaseDate;
+	public void setReleaseDate(String date) {
+		this.releaseDate = date;
 	}
 	public String getDescription() {
 		return description;
