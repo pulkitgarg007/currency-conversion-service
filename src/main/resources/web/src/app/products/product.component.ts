@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from './product';
 import { ProductService } from './product.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../shared/dialog/dialog.component';
+
 @Component({
   templateUrl: './product.component.html',
   styles: ['./product.component.css']
@@ -15,7 +18,9 @@ export class ProductListComponent implements OnInit{
   showImage = true;
   listfilter = '';
   errorMessage: string;
- constructor(private productService: ProductService) {
+  email: string;
+ constructor(private productService: ProductService,
+             private dialog: MatDialog) {
     }
 
   filteredList: IProduct[];
@@ -35,7 +40,7 @@ this.showImage = !this.showImage;
   }
 
   ngOnInit(): void{
-    this.productService.getProductsFromHttp().subscribe({
+    this.productService.getProductsFromJson().subscribe({
       next: products => {
         this.products = products;
         this.filteredList = products;
@@ -47,6 +52,16 @@ this.showImage = !this.showImage;
      });
   }
 
+ openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '300px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.email = result;
+    });
+  }
   onRatingClicked(message: string): void{
   	this.pageTitle = 'Product List: ' + message;
   }

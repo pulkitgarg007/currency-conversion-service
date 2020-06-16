@@ -1,20 +1,36 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-import { CurrencyConversionComponent } from './currency-conversion/currency-conversion.component';
 import { ProductDetailComponent } from './product-detail.component';
+import { ProductListComponent } from './product.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { ConvertToSpacesPipe } from '../shared/convert-to-spaces.pipe';
+import { RouterModule } from '@angular/router';
+import { ProductDetailGuard } from './product-detail.guard';
+import { SharedModule } from '../shared/shared.module';
+import { DialogComponent } from '../shared/dialog/dialog.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CurrencyConversionComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    ProductListComponent,
+    ConvertToSpacesPipe,
+    DialogComponent
   ],
   imports: [
-    BrowserModule
+    RouterModule.forChild([
+      { path: 'products', component: ProductListComponent },
+      {
+        path: 'products/:id',
+        canActivate: [ProductDetailGuard],
+        component: ProductDetailComponent
+      }
+    ]),
+    SharedModule,
+    MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
-export class AppModule { }
+export class ProductModule { }

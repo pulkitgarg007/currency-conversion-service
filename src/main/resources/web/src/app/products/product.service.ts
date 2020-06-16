@@ -20,7 +20,7 @@ export class ProductService {
 	handleError(handleError: any): Observable<IProduct[]> {
 		throw new Error("Method not implemented.");
 	}
-	 getProductsFromJson(): Observable<IProduct[]> {
+	getProductsFromJson(): Observable<IProduct[]> {
     	return this.httpClient.get<IProduct[]>(this.productUrl)
       .pipe(
         tap(data => console.log('All: ')),
