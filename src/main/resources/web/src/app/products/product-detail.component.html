@@ -3,6 +3,10 @@
   <div class='card-header'>
     {{pageTitle + ': ' + product.productName}}
   </div>
+  <div *ngIf="email">
+      You signed up with: {{email}}
+  </div>
+   <div><button mat-button (click)="openDialog()">BUY</button></div>
   <div class='card-footer'>
     <button class='btn btn-outline-secondary'
             (click)= 'onBack()'

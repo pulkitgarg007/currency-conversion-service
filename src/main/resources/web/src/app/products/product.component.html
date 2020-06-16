@@ -2,9 +2,7 @@
   <div class='card-header'>
     {{pageTitle}}
   </div>
-  <div *ngIf="email">
-      You signed up with: <p></p>
-    </div>
+  
   <div class='card-body'>
     <div class='row'>
       <div class='col-md-2'>{{filterBoxLabel}}</div>
@@ -31,7 +29,6 @@
             <th>Available</th>
             <th>Price</th>
             <th>Rating</th>
-            <th>Dialog</th>
           </tr>
         </thead>
         <tbody>
@@ -51,7 +48,6 @@
               (ratingClicked) = 'onRatingClicked($event)'>
               </pm-star>
             </td>
-             <td><button mat-button (click)="openDialog()">BUY</button></td>
           </tr>
         </tbody>
       </table>
