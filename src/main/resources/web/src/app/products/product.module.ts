@@ -10,13 +10,15 @@ import { RouterModule } from '@angular/router';
 import { ProductDetailGuard } from './product-detail.guard';
 import { SharedModule } from '../shared/shared.module';
 import { DialogComponent } from '../shared/dialog/dialog.component';
+import { CartComponent } from '../cart/cart.component';
 
 @NgModule({
   declarations: [
     ProductDetailComponent,
     ProductListComponent,
     ConvertToSpacesPipe,
-    DialogComponent
+    DialogComponent,
+    CartComponent
   ],
   imports: [
     RouterModule.forChild([

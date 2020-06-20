@@ -15,7 +15,9 @@ export class ProductListComponent implements OnInit{
   imageMargin = 2;
   showImage = true;
   listfilter = '';
+  cartValue = 0;
   errorMessage: string;
+  cartItems: IProduct[] = [ ];
  
  constructor(private productService: ProductService) {
     }
@@ -51,6 +53,12 @@ this.showImage = !this.showImage;
 
   onRatingClicked(message: string): void{
   	this.pageTitle = 'Product List: ' + message;
+  }
+
+  onAddToCart(product: IProduct){
+    this.cartValue = this.cartValue + 1;
+    this.cartItems.push(product);
+    console.log(this.cartItems  );
   }
 
   performFilter(filterValue: string): IProduct[] {

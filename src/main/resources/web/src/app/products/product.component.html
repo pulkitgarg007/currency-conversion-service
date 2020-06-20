@@ -1,8 +1,13 @@
 <div class='card'>
   <div class='card-header'>
     {{pageTitle}}
+    <span style="text-align: right;">
+      <button type="button" class="bt  btn-primary" [routerLink]="['/cart']">
+        Cart <span class="badge badge-light">{{cartValue}}</span>  
+       </button>                
+    </span>
   </div>
-  
+
   <div class='card-body'>
     <div class='row'>
       <div class='col-md-2'>{{filterBoxLabel}}</div>
@@ -12,47 +17,36 @@
     </div>
     <div class='row'>
       <div class='col-md-6'>
-        <h4>{{filterValueLabel}}  {{listFilter}}</h4>
+        <h4>{{filterValueLabel}} {{listFilter}}</h4>
       </div>
     </div>
-    <div class='table-responsive'>
-      <table class='table' *ngIf='filteredList && filteredList.length'>
-        <thead>
-          <tr>
-            <th>
-              <button class='btn btn-primary' (click) = 'toggleImage()'>
+    <button class='btn btn-primary' (click)='toggleImage()'>
                 {{showImage ? 'Hide Image' : 'Show Image' }}
-              </button>
-            </th>
-            <th>Product</th>
-            <th>Code</th>
-            <th>Available</th>
-            <th>Price</th>
-            <th>Rating</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor='let product of filteredList'>
-            <td><img
-            *ngIf = 'showImage'
-             [src] = 'product.imageUrl'
-            [title] = 'product.productName'
-            [style.width.px]='imageWidth'
-            [style.margin.px]='imageMargin'></td>
-            <td><a [routerLink] = "['/products',product.productId]"> {{ product.productName }}</a></td>
-            <td>{{ product.productCode | lowercase | convertToSpaces : '-' }}</td>
-            <td>{{ product.releaseDate }}</td>
-            <td>{{ product.price | currency :'USD' }}</td>
-            <td>
-              <pm-star [rating] = 'product.starRating'
-              (ratingClicked) = 'onRatingClicked($event)'>
-              </pm-star>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    </button>
     </div>
-
   </div>
-
-</div>
+  <div class='album py-5 bg-light'>
+    <div class='container'>
+      <div class='row' *ngIf='filteredList && filteredList.length'>
+        <div class='col-md-4' *ngFor='let product of filteredList'>
+          <div class='card mb-4 box-shadow'>
+            <a [routerLink]="['/products',product.productId]">
+            <img class='card-img-top center' style="height: 125px; width: 80%; display: block;" *ngIf='showImage'
+              [src]='product.imageUrl' [title]='product.productName'/></a>
+            <div class="card-body text-center">
+                {{ product.productName }}
+              <p>{{ product.productCode | lowercase | convertToSpaces : '-' }} <->
+                  {{ product.releaseDate }} <->
+                    {{ product.price | currency :'USD' }}
+              </p>
+              <p class='text-left'>Rating : 
+                <pm-star [rating]='product.starRating' (ratingClicked)='onRatingClicked($event)'>
+                </pm-star>
+              </p>
+              <div><button class="btn btn-primary" (click) = "onAddToCart(product)" >Add To Cart</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
