@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IProduct } from '../products/product';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -6,10 +10,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+   pageTitle = 'Cart Details';
+   cartList: string;
+  constructor(private route: ActivatedRoute,
+              private router: Router
+             ) {
+  }
 
-  constructor() { }
+  ngOnInit() {
+    this.route.paramMap
+      .subscribe({
+      next: products => {
+        this.cartList = products.getAll( "params")[0];
+         console.log(products);
+      }
+    });
+      console.log(this.cartList);
+      
+  }
 
-  ngOnInit(): void {
+  onBack(): void {
+    this.router.navigate(['/products']);
   }
 
 }

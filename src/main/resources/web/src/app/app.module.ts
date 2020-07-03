@@ -6,11 +6,14 @@ import { ProductModule } from './products/product.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent} from './home/welcome.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CustomerComponent } from './customers/customer.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomerRComponent } from './customersR/rcustomer.component';
 @NgModule({
-  declarations: [AppComponent, WelcomeComponent
+  declarations: [AppComponent, WelcomeComponent, CustomerComponent, CustomerRComponent
     ],
   imports: [ BrowserModule, ProductModule,
-     HttpClientModule, AppRoutingModule, BrowserAnimationsModule
+     HttpClientModule, AppRoutingModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

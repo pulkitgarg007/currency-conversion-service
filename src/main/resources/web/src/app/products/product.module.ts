@@ -11,6 +11,7 @@ import { ProductDetailGuard } from './product-detail.guard';
 import { SharedModule } from '../shared/shared.module';
 import { DialogComponent } from '../shared/dialog/dialog.component';
 import { CartComponent } from '../cart/cart.component';
+import { ProductsComponent } from './products.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CartComponent } from '../cart/cart.component';
     ProductListComponent,
     ConvertToSpacesPipe,
     DialogComponent,
-    CartComponent
+    CartComponent,
+    ProductsComponent
   ],
   imports: [
     RouterModule.forChild([
