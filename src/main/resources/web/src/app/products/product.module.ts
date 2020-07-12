@@ -11,8 +11,8 @@ import { ProductDetailGuard } from './product-detail.guard';
 import { SharedModule } from '../shared/shared.module';
 import { DialogComponent } from '../shared/dialog/dialog.component';
 import { CartComponent } from '../cart/cart.component';
-import { ProductsComponent } from './products.component';
-
+import { ProductAddComponent } from './product-add.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     ProductDetailComponent,
@@ -20,7 +20,7 @@ import { ProductsComponent } from './products.component';
     ConvertToSpacesPipe,
     DialogComponent,
     CartComponent,
-    ProductsComponent
+    ProductAddComponent
   ],
   imports: [
     RouterModule.forChild([
@@ -29,10 +29,11 @@ import { ProductsComponent } from './products.component';
         path: 'products/:id',
         canActivate: [ProductDetailGuard],
         component: ProductDetailComponent
-      }
+      },
+      {path: 'products/:id/edit', component: ProductAddComponent}
     ]),
     SharedModule,
-    MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule
+    MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule, FormsModule, ReactiveFormsModule
   ],
   providers: [],
   bootstrap: []
